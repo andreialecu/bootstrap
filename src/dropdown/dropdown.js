@@ -147,7 +147,7 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
       dropdownService.open( scope );
     } else {
       if (self.dropdownMenuTemplateUrl) {
-        templateScope.$destroy();
+        if (templateScope) templateScope.$destroy();
         var newEl = angular.element('<ul class="dropdown-menu"></ul>');
         self.dropdownMenu.replaceWith(newEl);
         self.dropdownMenu = newEl;
