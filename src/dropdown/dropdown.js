@@ -135,7 +135,7 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
       if (self.dropdownMenuTemplateUrl) {
         $templateRequest(self.dropdownMenuTemplateUrl).then(function(tplContent) {
           templateScope = scope.$new();
-          $compile(tplContent.trim())(templateScope, function(dropdownElement){
+          $compile(tplContent.trim())(templateScope, function(dropdownElement) {
             var newEl = dropdownElement;
             self.dropdownMenu.replaceWith(newEl);
             self.dropdownMenu = newEl;
@@ -147,7 +147,9 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
       dropdownService.open( scope );
     } else {
       if (self.dropdownMenuTemplateUrl) {
-        if (templateScope) templateScope.$destroy();
+        if (templateScope) {
+          templateScope.$destroy();
+        }
         var newEl = angular.element('<ul class="dropdown-menu"></ul>');
         self.dropdownMenu.replaceWith(newEl);
         self.dropdownMenu = newEl;
@@ -185,11 +187,11 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
     restrict: 'AC',
     require: '?^dropdown',
     link: function(scope, element, attrs, dropdownCtrl) {
-      if ( !dropdownCtrl ) {
+      if (!dropdownCtrl) {
         return;
       }
       var tplUrl = attrs.templateUrl;
-      if ( tplUrl ) {
+      if (tplUrl) {
         dropdownCtrl.dropdownMenuTemplateUrl = tplUrl;
       }
       if (!dropdownCtrl.dropdownMenu) {
